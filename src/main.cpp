@@ -3,7 +3,6 @@
 #include <iostream>
 #include <mutex>
 #include <queue>
-#include <string>
 #include <thread>
 
 typedef bool (*JobFunction)();

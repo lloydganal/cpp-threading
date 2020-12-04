@@ -54,16 +54,16 @@ int main() {
     std::thread worker([&]() {
         std::cout << "Worker - Start" << std::endl;
         bool exit = false;
+
         for (;;) {
             job_queue.wait_for_job();
             JobFunction job = job_queue.pop_job();
-            if (job() == true) {
-                exit = true;
-            }
 
-            if (exit && job_queue.is_empty()) {
+            if (job() == true)
+                exit = true;
+
+            if (exit && job_queue.is_empty())
                 break;
-            }
         }
         std::cout << "Worker - End" << std::endl;
     });
